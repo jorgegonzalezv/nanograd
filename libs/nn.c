@@ -107,7 +107,8 @@ float_tensor* optimize(float_tensor *input, float y_true, float_tensor *weights,
         //weight_state->data[i] = (-y_pred + y_true) * input->data[i]; // reduced expression for logistic loss with sigmoid... (less numeric errors?)
 
     }
-    bias_state = -y_pred + y_true;
+    //bias_state = -y_pred + y_true;
+    bias_state = cross_entropy_loss_derivative(y_true, y_pred) * y_pred * (1 - y_pred);
 
     //printf(">> Gradiente weights: %f, %f\n",weight_state->data[0], weight_state->data[1]);
 
@@ -115,8 +116,7 @@ float_tensor* optimize(float_tensor *input, float y_true, float_tensor *weights,
     for(int i=0; i<weights->size; i++){
         weights->data[i] = weights->data[i] + learning_rate * weight_state->data[i];
     }
-    *bias = cross_entropy_loss_derivative(y_true, y_pred) * y_pred * (1 - y_pred);
-    //*bias += learning_rate * bias_state;
+    *bias += learning_rate * bias_state;
 
     free(weight_state);
 

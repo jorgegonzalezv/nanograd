@@ -27,6 +27,7 @@ float cross_entropy_loss_derivative(float y_true, float y_pred);
 /* Perceptron classifier optimize over sample and ground truth */
 float_tensor* optimize(float_tensor *input, float y_true, float_tensor *weights, float * bias, float learning_rate);
 
+/* Perceptron classifier evaluation over sample */
 float evaluate(float_tensor *input, float_tensor *weights, float *bias);
 
 #endif

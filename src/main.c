@@ -31,7 +31,6 @@ int try_nn(){
 }
 
 int try_and(){
-    
     float_tensor *tensor_1 = create_tensor((float[2]){0,0}, 2);
     float_tensor *tensor_2 = create_tensor((float[2]){1,0}, 2);
     float_tensor *tensor_3 = create_tensor((float[2]){0,1}, 2);
@@ -48,7 +47,7 @@ int try_and(){
 
     for (int i=0; i<epochs; i++){
         idx = i % 4;
-        printf("Epoch: %d, weights: %f, %f, bias: %f\n",i,  weights->data[0], weights->data[1], bias);
+        //printf("Epoch: %d, weights: %f, %f, bias: %f\n",i,  weights->data[0], weights->data[1], bias);
         optimize(inputs[idx], labels[idx], weights, &bias, learning_rate);
     }
 
@@ -60,7 +59,6 @@ int try_and(){
     }
 
     return 0;
-
 }
 
 int main(int argc, char **argv){
