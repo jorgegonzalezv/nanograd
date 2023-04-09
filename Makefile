@@ -1,18 +1,20 @@
 CC=gcc
 CFLAGS=-Wall
+BUILDIR=build
+SRCDIR=src
 
-all: main
+all: $(BUILDIR) | main 
 
-build/basic.o: libs/basic/basic.c libs/basic/basic.h
-	$(CC) $(CFLAGS) -c libs/basic/basic.c -o build/basic.o
+$(BUILDIR):
+	mkdir $(BUILDIR)
 
-build/nn.o: libs/nn.c libs/nn.h
-	$(CC) $(CFLAGS) -c libs/nn.c -o build/nn.o
+build/ngrad.o: $(SRCDIR)/ngrad.c $(SRCDIR)/ngrad.h
+	$(CC) $(CFLAGS) -c $(SRCDIR)/ngrad.c -o $(BUILDIR)/ngrad.o
 	
-main: src/main.c build/nn.o 
+main: $(SRCDIR)/main.c $(BUILDIR)/ngrad.o 
 	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
-	rm -rf build/*.o
-	rm src/main.o
+	rm -rf $(BUILDIR)
+	rm $(SRCDIR)/main.o
 	rm main

@@ -1,4 +1,4 @@
-# nanograd
+# NanoGrad
 
 Welcome to nanograd!
 

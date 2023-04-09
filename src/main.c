@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../libs/nn.h"
+#include "ngrad.h"
 
 int try_nn(){
     float_tensor *res;

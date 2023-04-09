@@ -1,7 +1,7 @@
 #include <stdio.h> // where shoud i put this?
 #include <stdlib.h>
 #include <math.h>
-#include "nn.h"
+#include "ngrad.h"
 
 float_tensor* create_tensor(float *data, int size){
     float_tensor *tensor = (float_tensor*) malloc(sizeof(float_tensor));
